@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SetterInjectedControllerTest {
 
+    // Di without SpringFramework
+
     SetterInjectedController controller;
 
     @BeforeEach
