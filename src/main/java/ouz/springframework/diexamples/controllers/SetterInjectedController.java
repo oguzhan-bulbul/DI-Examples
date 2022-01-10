@@ -1,22 +1,25 @@
 package ouz.springframework.diexamples.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import ouz.springframework.diexamples.services.GreetingService;
+import ouz.springframework.diexamples.services.IGreetingService;
+import ouz.springframework.diexamples.services.PropertyInjectedGreetingService;
 @Controller
 public class SetterInjectedController {
 
     // Di without SpringFramework
 
 
-    private GreetingService greetingService;
+    private IGreetingService greetingService;
     @Autowired
-    public void setGreetingService(GreetingService greetingService){
+    @Qualifier("setterInjectedGreetingService")
+    public void setGreetingService(IGreetingService greetingService){
         this.greetingService=greetingService;
     }
 
     public String getGreeting(){
 
-        return "Setter " +greetingService.sayGreeting();
+        return greetingService.sayGreeting();
     }
 }

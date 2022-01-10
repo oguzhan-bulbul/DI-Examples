@@ -2,9 +2,7 @@ package ouz.springframework.diexamples.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ouz.springframework.diexamples.services.GreetingService;
-
-import static org.junit.jupiter.api.Assertions.*;
+import ouz.springframework.diexamples.services.PropertyInjectedGreetingService;
 
 class PropertyInjectedControllerTest {
 
@@ -13,7 +11,7 @@ class PropertyInjectedControllerTest {
     @BeforeEach
     void setUp() {
         controller = new PropertyInjectedController();
-        controller.greetingService = new GreetingService();
+        controller.greetingService = new PropertyInjectedGreetingService();
     }
 
     @Test

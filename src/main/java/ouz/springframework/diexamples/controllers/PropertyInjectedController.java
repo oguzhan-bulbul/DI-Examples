@@ -1,16 +1,19 @@
 package ouz.springframework.diexamples.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import ouz.springframework.diexamples.services.GreetingService;
+import ouz.springframework.diexamples.services.IGreetingService;
+import ouz.springframework.diexamples.services.PropertyInjectedGreetingService;
 @Controller
 public class PropertyInjectedController {
 
     // Di without SpringFramework
     @Autowired
-    public GreetingService greetingService;
+    @Qualifier("propertyInjectedGreetingService")
+    public IGreetingService greetingService;
 
     public String getGreeting(){
-        return "Property " + greetingService.sayGreeting();
+        return greetingService.sayGreeting();
     }
 }
