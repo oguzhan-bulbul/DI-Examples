@@ -4,10 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import ouz.springframework.diexamples.controllers.ConstructorInjectedController;
-import ouz.springframework.diexamples.controllers.MyController;
-import ouz.springframework.diexamples.controllers.PropertyInjectedController;
-import ouz.springframework.diexamples.controllers.SetterInjectedController;
+import ouz.springframework.diexamples.controllers.*;
 
 @SpringBootApplication
 public class DiExamplesApplication {
@@ -30,6 +27,11 @@ public class DiExamplesApplication {
 
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.getGreeting());
+		System.out.println("------------------------------------------");
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
+
 		System.out.println("------------------------------------------");
 
 
