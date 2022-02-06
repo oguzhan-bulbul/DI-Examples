@@ -6,7 +6,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import ouz.springframework.diexamples.controllers.*;
-@ComponentScan(basePackages = {"ouz.springframework.diexamples","com.ouz.pets"})
 @SpringBootApplication
 public class DiExamplesApplication {
 
@@ -14,7 +13,8 @@ public class DiExamplesApplication {
 		ApplicationContext ctx = SpringApplication.run(DiExamplesApplication.class, args);
 
 		PetController petController = (PetController) ctx.getBean("petController",PetController.class);
-		System.out.println("The best pet is : ");
+		System.out.println("The b" +
+				"est pet is : ");
 		System.out.println(petController.whichPetIsTheBest()); // We need to define ComponentScan Annotation for PetController to be able to find PetService
 
 
