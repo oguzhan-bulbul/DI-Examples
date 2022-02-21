@@ -3,16 +3,28 @@ package ouz.springframework.diexamples.config;
 import com.ouz.pets.DogPetService;
 import com.ouz.pets.PetService;
 import com.ouz.pets.PetServiceFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.*;
+import ouz.springframework.diexamples.datasource.FakeDataSource;
 import ouz.springframework.diexamples.repositories.EnglishGreetingRepository;
 import ouz.springframework.diexamples.repositories.EnglishGreetingRepositoryImpl;
 import ouz.springframework.diexamples.services.*;
 
+
 @Configuration
 public class GreetingServiceConfig {
+
+    @Bean
+    FakeDataSource fakeDataSource(@Value("${ouz.username}") String username
+                                 ,@Value("${ouz.password}") String password
+                                 ,@Value("${ouz.jdbcurl}") String jdbcurl){
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUserName(username);
+        fakeDataSource.setPassword(password);
+        fakeDataSource.setJdbcurl(jdbcurl);
+        return fakeDataSource;
+    }
+
 
     @Bean
     PetServiceFactory petServiceFactory(){

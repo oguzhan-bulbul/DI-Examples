@@ -6,6 +6,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import ouz.springframework.diexamples.controllers.*;
+import ouz.springframework.diexamples.datasource.FakeDataSource;
+
 @SpringBootApplication
 public class DiExamplesApplication {
 
@@ -40,6 +42,12 @@ public class DiExamplesApplication {
 		System.out.println(i18nController.sayHello());
 
 		System.out.println("------------------------------------------");
+
+
+		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource.getUserName());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getJdbcurl());
 
 
 	}
